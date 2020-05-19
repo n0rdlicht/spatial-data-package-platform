@@ -1,4 +1,11 @@
-# Gemeindescan Web UI
+<h1 align="center">
+    Gemeindescan Web UI
+</h1>
+
+<p align="center">
+<a href="https://bitbucket.org/cividi/gemeindescan-webui/blob/master/LICENSE" title="License"><img src="https://img.shields.io/badge/License-MIT-green.svg?style=flat"></a>
+<a href="https://app.fossa.com/projects/git%2Bbitbucket.org%2Fcividi%2Fgemeindescan-webui?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.com/api/projects/git%2Bbitbucket.org%2Fcividi%2Fgemeindescan-webui.svg?type=shield"/></a>
+</p>
 
 Web application under heavy development. For more information, please visit https://cividi.ch
 
