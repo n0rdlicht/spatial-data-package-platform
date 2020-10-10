@@ -49,14 +49,13 @@ if `make init` doesn't work you can execute the commands one by one.
 ```bash
 # go into django container
 make enter_django
-cd django
 python3 manage.py migrate
 python3 manage.py createsuperuser
 make import-gemeinden-json
 # exit django container
 exit
 # enter vue container
-maker enter_vue
+make enter_vue
 ln -s /node_modules ./
 ```
 
