@@ -27,6 +27,9 @@ build_docker:
 
 build: build_docker
 
+pull:
+	docker-compose pull
+
 push:
 	cd django && make push
 	cd vue && make push
