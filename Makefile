@@ -44,9 +44,9 @@ enter_www:
 	$(DOCKER_EXEC_WWW) ash
 
 start_all: up
-	$(DOCKER_CRON_VUE) make &
 	$(DOCKER_CRON_DJANGO) make &
 	$(DOCKER_CRON_VUE) make screenshotservice &
+	$(DOCKER_EXEC_VUE) make
 
 start_vue:
 	$(DOCKER_EXEC_VUE) make

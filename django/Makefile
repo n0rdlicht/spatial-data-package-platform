@@ -26,7 +26,7 @@ collectstatic:
 	$(DOCKER_EXEC) python3 manage.py collectstatic --noinput
 
 symlinks:
-	$(DOCKER_EXEC) sh -c "cd /var/services/django; ln -s media downloads"
+	$(DOCKER_EXEC) sh -c "cd /var/services/django; ln -sf media downloads"
 
 migrate:
 	$(DOCKER_EXEC) python3 manage.py migrate
