@@ -6,7 +6,6 @@ DOCKER_EXEC_WWW=$(shell command -v docker > /dev/null && echo "docker-compose ex
 DOCKER_CRON_VUE=$(shell command -v docker > /dev/null && echo "docker-compose exec -T vue")
 DOCKER_CRON_DJANGO=$(shell command -v docker > /dev/null && echo "docker-compose exec -T django")
 
-
 .PHONY: tests
 
 init:
@@ -33,6 +32,9 @@ pull:
 push:
 	cd django && make push
 	cd vue && make push
+
+logs:
+	docker-compose logs -f
 
 enter_django:
 	$(DOCKER_EXEC_DJANGO) ash
@@ -98,10 +100,20 @@ ab-html:
 	ab -c 10 -n 2000 http://gemeindescan.ch/
 
 dump-db:
-	@docker-compose exec pdb sh -c 'pg_dump --no-owner --no-acl --schema=public -U $$POSTGRES_USER $$POSTGRES_DB' > tmp/dump.sql
+	@echo "Backing up to `date +%Y%m%d-%H%M`.sql"
+	@docker-compose exec pdb sh -c 'pg_dump --no-owner --no-acl --schema=public -U $$POSTGRES_USER $$POSTGRES_DB' > `date +%Y%m%d-%H%M`.sql
 
 import-db:
 	@docker-compose exec pdb sh -c 'psql -U $$POSTGRES_USER $$POSTGRES_DB < /var/services/postgres/var/dump.sql'
+
+update-db:
+	@docker-compose exec pdb sh -c 'cd /usr/lib/postgresql/11/lib && ln -sf postgis-3.so postgis-2.5.so'
+	@docker-compose exec pdb sh -c 'psql -U $$POSTGRES_USER $$POSTGRES_DB -c "alter extension postgis update"'
+
+drop-db:
+	@echo "Warning: dropping database. Ctrl-C to abort, any key to continue ..."
+	@read
+	@docker volume rm gemeindescan-django_postgres_data
 
 tests:
 	cd django && make tests

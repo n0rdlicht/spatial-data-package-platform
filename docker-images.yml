@@ -2,7 +2,7 @@ version: "2"
 
 services:
   pdb:
-    image: postgis/postgis:11-2.5-alpine
+    image: postgis/postgis:11-3.0-alpine
     hostname: pdb
 
   vue:
