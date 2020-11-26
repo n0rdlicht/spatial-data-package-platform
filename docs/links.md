@@ -6,5 +6,5 @@
 
 ## datapackages
 
-- [gemeindescan-sample](https://bitbucket.org/cividi/gemeindescan-sample), sample gemeindescan data
+- [gemeindescan-sample](https://github.com/cividi/spatial-data-package-spec), sample gemeindescan data and spatial data package specification
 - [gemeindescan package builder](https://github.com/cividitech/gemeindescan-package-builder)
