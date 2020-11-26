@@ -7,7 +7,7 @@ DOCKER_EXEC_CRON=$(shell command -v docker > /dev/null && echo "docker-compose e
 default: dev
 
 init:
-	$(DOCKER_EXEC) ln -sf /node_modules ./
+	$(DOCKER_EXEC_CRON) ln -sf /node_modules ./
 
 enter:
 	$(DOCKER_EXEC) ash
@@ -25,7 +25,7 @@ screenshotservice:
 	$(DOCKER_EXEC) node /opt/vue/screenshot-service/screenshot-server.js
 
 tests:
-	$(DOCKER_EXEC) yarn test
+	$(DOCKER_EXEC_CRON) yarn test
 
 build:
 	$(DOCKER_EXEC) yarn build --mode production
