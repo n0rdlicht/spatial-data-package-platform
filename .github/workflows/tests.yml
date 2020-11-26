@@ -26,8 +26,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Setup
-        run: touch env.hosts.prod && docker-compose pull && make up && make init
+      - name: setup
+        run: touch env.hosts.prod && docker-compose pull
+
+      - name: docker-compose up
+        run: make up
+
+      - name: sleep 5s
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '5s'
+      
+      - name: init
+        run: make init
 
       # Runs a single command using the runners shell
       - name: Run tests
