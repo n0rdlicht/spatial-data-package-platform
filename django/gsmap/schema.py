@@ -35,7 +35,7 @@ Q_SNAPSHOT_WITH_NOT_LISTED = Q(permission__lte=SnapshotPermission.NOT_LISTED)
 class SnapshotOnlyPublicFilter(FilterSet):
     class Meta:
         model = Snapshot
-        fields = ['municipality__id', 'municipality__canton', 'is_showcase']
+        fields = ['municipality__id', 'municipality__canton', 'is_showcase', 'topic']
 
     @property
     def qs(self):
@@ -50,7 +50,7 @@ class SnapshotNode(DjangoObjectType):
             'predecessor'
         ]
         filter_fields = [
-            'municipality__id', 'municipality__canton', 'is_showcase'
+            'municipality__id', 'municipality__canton', 'is_showcase', 'topic'
         ]
         interfaces = [graphene.relay.Node]
 
