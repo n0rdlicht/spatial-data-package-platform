@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sortedm2m',
     'sortedm2m_filter_horizontal_widget',
     'django_json_widget',
+    'solo',
 
     # own
     'gsuser',
